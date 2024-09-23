@@ -2,7 +2,7 @@
 Author: zhang 2672961671@qq.com
 Date: 2024-09-23 23:26:58
 LastEditors: zhang 2672961671@qq.com
-LastEditTime: 2024-09-23 23:43:10
+LastEditTime: 2024-09-24 00:52:10
 FilePath: /undefined/Users/zhanghongping/Library/Containers/com.tencent.WeWorkMac/Data/Documents/Profiles/4E0C1A2B34695EF5CBEED9C978379A9C/Caches/Files/2024-09/4d8dcd153440326ce6259dd10c520cf6/1.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -57,5 +57,36 @@ import shutil
 # folder_path = '你的文件夹路径'
 # ensure_folder(folder_path)
 
-current_file_path = os.path.abspath(__file__)
-print(current_file_path)
+# 当前路径
+# current_file_path = os.path.abspath(__file__)
+# print(current_file_path)
+
+# aaa结尾的路径
+def find_files_and_dirs(path):
+    matches = []
+    for root, dirs, files in os.walk(path):
+        for name in files + dirs:
+            print(name)
+            if name.endswith('aaa'):
+                matches.append(os.path.join(root, name))
+    return matches
+
+folder_path = '/Users/zhanghongping/SourceTreeFiles'
+results = find_files_and_dirs(folder_path)
+print(results)
+
+# 遍历文件夹，找出以 "aaa" 结尾的文件和文件夹，并将它们复制到指定目录：
+# def copy_files_and_dirs(src_path, dest_path):
+#     if not os.path.exists(dest_path):
+#         os.makedirs(dest_path)
+
+#     for root, dirs, files in os.walk(src_path):
+#         for name in files + dirs:
+#             if name.endswith('aaa'):
+#                 full_path = os.path.join(root, name)
+#                 shutil.copy(full_path, dest_path)
+
+# src_folder = '源文件夹路径'
+# dest_folder = '目标文件夹路径'
+# copy_files_and_dirs(src_folder, dest_folder)
+
